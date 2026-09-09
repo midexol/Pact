@@ -30,8 +30,14 @@ Score = (Completion Rate * 0.7) + ((Average Quality / 10) * 0.3)
 
 ## Adapter Boundaries
 
-| Boundary | Interface | Demo Implementation | Live Implementation |
-|---|---|---|---|
-| **Memory** | `MemoryStore` | In-Memory Map | `SibylClient` (FastAPI sidecar over SQLite) |
-| **Settlement** | `BasePaymentClient` | `DemoPaymentClient` | `LiveBasePaymentClient` (Base Sepolia ERC-20 USDC) |
-| **Discovery** | `VirtualsClient` | `DemoVirtualsClient` | Virtuals ACP Client |
+- **Memory** (`MemoryStore` interface)
+  - Demo Implementation: In-Memory Map
+  - Live Implementation: `SibylClient` (FastAPI sidecar over SQLite)
+
+- **Settlement** (`BasePaymentClient` interface)
+  - Demo Implementation: `DemoPaymentClient`
+  - Live Implementation: `LiveBasePaymentClient` (Base Sepolia ERC-20 USDC)
+
+- **Discovery** (`VirtualsClient` interface)
+  - Demo Implementation: `DemoVirtualsClient`
+  - Live Implementation: Virtuals ACP Client
