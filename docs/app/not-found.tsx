@@ -1,1 +1,7 @@
-export { NotFoundPage as default } from 'nextra-theme-docs'
+'use client'
+
+import { NotFoundPage } from 'nextra-theme-docs'
+
+export default function NotFound() {
+  return <NotFoundPage />
+}
