@@ -2,5 +2,5 @@ export default {
   index: "Overview",
   "getting-started": "Getting Started",
   architecture: "Architecture",
-  "api-reference": "API Reference"
+  reference: "API Reference"
 }
