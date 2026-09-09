@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f7f3ec;
+  --paper-raised: #fffdf9;
+  --paper-sunk: #efe8db;
+  --line: #e6ddcd;
+  --line-soft: #eee7d9;
+
+  --ink: #1c150f;
+  --ink-soft: #5c5347;
+  --ink-faint: #9a8f7d;
+
+  --accent: #17111a;
+  --accent-soft: #33283a;
+
+  --settled: #0ca30c;
+  --settled-bg: #e3f2df;
+  --failed: #d03b3b;
+  --failed-bg: #fbe6e2;
+  --pending: #b9790a;
+  --pending-bg: #faedd3;
+  --disputed: #ec835a;
+  --disputed-bg: #fbe9df;
+
+  --font-display: var(--font-manrope);
+  --font-serif: var(--font-fraunces);
+  --font-mono: var(--font-plex-mono);
+  --font-body: var(--font-inter);
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-paper-sunk: var(--paper-sunk);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-settled: var(--settled);
+  --color-settled-bg: var(--settled-bg);
+  --color-failed: var(--failed);
+  --color-failed-bg: var(--failed-bg);
+  --color-pending: var(--pending);
+  --color-pending-bg: var(--pending-bg);
+  --color-disputed: var(--disputed);
+  --color-disputed-bg: var(--disputed-bg);
+  --font-display: var(--font-display);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+  --font-body: var(--font-body);
+}
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Warm painterly wash used behind the dashboard hero — an abstract stand-in
+   for illustration, not a photo, so it stays honest about being generated. */
+.hero-wash {
+  background:
+    radial-gradient(1100px 480px at 12% -10%, rgba(235, 158, 92, 0.35), transparent 60%),
+    radial-gradient(900px 520px at 90% -20%, rgba(214, 118, 149, 0.28), transparent 65%),
+    radial-gradient(1200px 700px at 50% 120%, rgba(150, 120, 200, 0.16), transparent 70%),
+    var(--paper-sunk);
+}
+
+/* Landing page hero: real photographic background with a scrim so the
+   headline stays legible regardless of what's under it. */
+.hero-photo {
+  background-image:
+    linear-gradient(180deg, rgba(28, 21, 15, 0.2) 0%, rgba(28, 21, 15, 0.05) 30%, rgba(247, 243, 236, 0.1) 72%, var(--paper) 100%),
+    url("/hero-clouds.jpg");
+  background-size: cover;
+  background-position: center 60%;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper-raised);
+}
+
+:focus-visible {
+  outline: 1.5px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+}
+
+.card-hover {
+  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+.card-hover:hover {
+  border-color: color-mix(in srgb, var(--accent) 25%, var(--line));
+  box-shadow: 0 6px 20px -12px rgba(28, 21, 15, 0.25);
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
