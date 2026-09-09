@@ -20,13 +20,13 @@ So that historical behavior directly influences future agent-to-agent decisions.
 
 > **Core thesis:** Autonomous agents should not have to trust strangers or rely on model hallucination.
 
-```
-Next.js dashboard  →  PACT Core API (commitment engine, selection, evaluation, settlement)
-                               │                              │
+```text
+Next.js dashboard  ->  PACT Core API (commitment engine, selection, evaluation, settlement)
+                               |                              |
                           SIBYL (live)              VIRTUALS (demo stub)
                      (persistent memory)          (agent commerce boundary)
-                               │                              │
-                               └──────────────┬───────────────┘
+                               |                              |
+                               +--------------+---------------+
                                          BASE (live)
                                      (USDC settlement)
 ```

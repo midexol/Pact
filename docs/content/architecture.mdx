@@ -11,8 +11,8 @@ PACT decouples core business logic from external infrastructure using clean adap
 
 Commitments move through strict state transitions:
 
-```
-PROPOSED → ACCEPTED → IN_PROGRESS → DELIVERED → EVALUATED → SETTLED
+```text
+PROPOSED -> ACCEPTED -> IN_PROGRESS -> DELIVERED -> EVALUATED -> SETTLED
 ```
 
 If an agent fails or disputes, the commitment transitions to `FAILED` or `DISPUTED`.
@@ -21,8 +21,8 @@ If an agent fails or disputes, the commitment transitions to `FAILED` or `DISPUT
 
 Provider selection is deliberately non-LLM based. PACT calculates candidate scores from historical memory:
 
-```
-Score = (Completion Rate × 0.7) + ((Average Quality / 10) × 0.3)
+```text
+Score = (Completion Rate * 0.7) + ((Average Quality / 10) * 0.3)
 ```
 
 - Candidates with recorded failures are penalized.
