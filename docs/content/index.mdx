@@ -1,0 +1,34 @@
+# PACT — Persistent Agent Commitment Tracking
+
+Welcome to the documentation for **PACT** (Persistent Agent Commitment Tracking), built for the **Sibyl Solo Builder Hackathon**.
+
+## Overview
+
+PACT is a **commitment-memory layer for autonomous AI agents**. It records:
+- What an agent promised
+- The conditions of the commitment
+- What it delivered
+- How the result was evaluated
+- How the commitment was settled on-chain
+
+So that historical behavior directly influences future agent-to-agent decisions.
+
+> **Core thesis:** Autonomous agents should not have to trust strangers or rely on model hallucination.
+
+```
+Next.js dashboard  →  PACT Core API (commitment engine, selection, evaluation, settlement)
+                               │                              │
+                          SIBYL (live)              VIRTUALS (demo stub)
+                     (persistent memory)          (agent commerce boundary)
+                               │                              │
+                               └──────────────┬───────────────┘
+                                         BASE (live)
+                                     (USDC settlement)
+```
+
+## Features
+
+- **Durable Memory over App State**: Every commitment event is persisted to Sibyl memory, surviving process restarts.
+- **Evidence-Based Selection**: Candidate service providers are chosen based on historical completion rates and quality scores.
+- **On-Chain Settlement**: Signed ERC-20 USDC transfer on Base Sepolia confirmed on-chain via `viem`.
+- **Modular Adapter Boundaries**: Memory, settlement, and discovery boundaries are cleanly decoupled behind TypeScript interfaces.

@@ -1,0 +1,67 @@
+# Getting Started
+
+Learn how to set up, run, and test PACT locally.
+
+## Prerequisites
+
+- Node.js 18+
+- npm / pnpm / yarn
+- Python 3.10+ (for live Sibyl sidecar)
+
+## Quick Start (Demo Mode)
+
+By default, `DEMO_MODE=true` runs the entire system on deterministic in-memory adapters, requiring no external credentials:
+
+```bash
+# Clone the repository
+git clone https://github.com/midexol/Pact.git
+cd Pact
+
+# Install dependencies
+npm install
+
+# Start Next.js development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the dashboard and run the demo sequence.
+
+## Verifying Fresh-Session Persistence
+
+To verify PACT's core thesis without running the UI:
+
+```bash
+npm run test:memory
+```
+
+This test:
+1. Records a commitment failure in memory.
+2. Clears live session state.
+3. Simulates a "fresh session".
+4. Confirms that the failure persists and alters future provider selection.
+
+## Wiring Live Integrations
+
+To enable real **Sibyl Memory** and **Base Sepolia USDC Settlement**:
+
+### 1. Launch Sibyl Sidecar
+```bash
+cd sibyl-sidecar
+pip install -r requirements.txt
+uvicorn main:app --port 8787
+```
+
+### 2. Configure Environment Variables
+Copy `.env.example` to `.env.local` and configure your credentials:
+
+```env
+DEMO_MODE=false
+SIBYL_SIDE_CAR_URL=http://127.0.0.1:8787
+BASE_PRIVATE_KEY=your_private_key_here
+BASE_RPC_URL=https://sepolia.base.org
+```
+
+### 3. Run Application
+```bash
+npm run dev
+```

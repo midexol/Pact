@@ -1,0 +1,30 @@
+# Architecture & Design
+
+PACT decouples core business logic from external infrastructure using clean adapter boundaries.
+
+## Commitment State Machine
+
+Commitments move through strict state transitions:
+
+```
+PROPOSED → ACCEPTED → IN_PROGRESS → DELIVERED → EVALUATED → SETTLED
+```
+
+If an agent fails or disputes, the commitment transitions to `FAILED` or `DISPUTED`.
+
+## Evidence-Based Provider Selection
+
+Provider selection is deliberately non-LLM based. PACT calculates candidate scores from historical memory:
+
+$$\text{Score} = (\text{Completion Rate} \times 0.7) + \left(\frac{\text{Average Quality}}{10} \times 0.3\right)$$
+
+- Candidates with recorded failures are penalized.
+- Candidates with consistent completion and high quality win commitments.
+
+## Adapter Boundaries
+
+| Boundary | Interface | Demo Implementation | Live Implementation |
+|---|---|---|---|
+| **Memory** | `MemoryStore` | In-Memory Map | `SibylClient` (FastAPI sidecar over SQLite) |
+| **Settlement** | `BasePaymentClient` | `DemoPaymentClient` | `LiveBasePaymentClient` (Base Sepolia ERC-20 USDC) |
+| **Discovery** | `VirtualsClient` | `DemoVirtualsClient` | Virtuals ACP Client |
