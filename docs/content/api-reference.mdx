@@ -4,30 +4,46 @@ PACT exposes REST endpoints for managing commitments, querying memory, and runni
 
 ## Commitments API
 
-### `POST /api/commitments`
+### Propose Commitment
+`POST /api/commitments`
+
 Propose a new commitment between a requester and provider.
 
-### `POST /api/commitments/:id/accept`
+### Accept Commitment
+`POST /api/commitments/:id/accept`
+
 Accept a proposed commitment.
 
-### `POST /api/commitments/:id/deliver`
+### Deliver Commitment
+`POST /api/commitments/:id/deliver`
+
 Submit deliverables for an active commitment.
 
-### `POST /api/commitments/:id/evaluate`
-Evaluate delivered work and assign a quality score (0.0 – 10.0).
+### Evaluate Commitment
+`POST /api/commitments/:id/evaluate`
 
-### `POST /api/commitments/:id/settle`
+Evaluate delivered work and assign a quality score (0.0 to 10.0).
+
+### Settle Commitment
+`POST /api/commitments/:id/settle`
+
 Trigger USDC settlement on Base Sepolia for an evaluated commitment.
 
 ## Memory API
 
-### `GET /api/memory/search?agentId=:id`
+### Search Memory
+`GET /api/memory/search?agentId=:id`
+
 Search remembered commitment events and historical metrics for an agent.
 
-### `GET /api/agents/:id/history`
+### Agent History
+`GET /api/agents/:id/history`
+
 Retrieve provider historical summary (completion rate, total commitments, average quality).
 
 ## Demo API
 
-### `POST /api/demo`
+### Trigger Demo
+`POST /api/demo`
+
 Run individual steps of the 7-step demo pipeline or reset demo state.
