@@ -10,7 +10,7 @@ export async function generateMetadata(props: { params: Promise<{ mdxPath?: stri
     const { metadata } = await importPage(params.mdxPath)
     return metadata
   } catch {
-    return { title: '404: Page Not Found' }
+    return {}
   }
 }
 
