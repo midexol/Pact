@@ -4,6 +4,7 @@ const LINKS = [
   { href: "#how-it-works", label: "How it works" },
   { href: "#status", label: "Status" },
   { href: "#faq", label: "FAQ" },
+  { href: "/docs", label: "Docs" },
 ];
 
 export function LandingNav() {
