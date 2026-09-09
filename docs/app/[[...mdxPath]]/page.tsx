@@ -63,7 +63,7 @@ export default async function Page(props: { params: Promise<{ mdxPath?: string[]
       pageMap={pageMap}
     >
       <Wrapper toc={toc} metadata={metadata}>
-        <MDXContent {...props} params={params} />
+        <MDXContent params={params} />
       </Wrapper>
     </Layout>
   )
