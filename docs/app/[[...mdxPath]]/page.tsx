@@ -15,6 +15,8 @@ export async function generateMetadata(props: { params: Promise<{ mdxPath?: stri
   }
 }
 
+const Wrapper = useMDXComponents().wrapper
+
 export default async function Page(props: { params: Promise<{ mdxPath?: string[] }> }) {
   const params = await props.params
   const pageMap = await getPageMap()
@@ -44,7 +46,7 @@ export default async function Page(props: { params: Promise<{ mdxPath?: string[]
       </Layout>
     )
   }
-  const { default: MDXContent, metadata } = result
+  const { default: MDXContent, toc, metadata } = result
   return (
     <Layout
       navbar={
@@ -60,7 +62,9 @@ export default async function Page(props: { params: Promise<{ mdxPath?: string[]
       }
       pageMap={pageMap}
     >
-      <MDXContent {...props} params={params} />
+      <Wrapper toc={toc} metadata={metadata}>
+        <MDXContent {...props} params={params} />
+      </Wrapper>
     </Layout>
   )
 }
