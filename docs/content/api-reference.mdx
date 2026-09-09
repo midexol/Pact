@@ -7,48 +7,13 @@ description: PACT REST API endpoints and reference
 
 PACT exposes REST endpoints for managing commitments, querying memory, and running demo scenarios.
 
-## Commitments API
+## Endpoints Summary
 
-### Propose Commitment
-`POST /api/commitments`
-
-Propose a new commitment between a requester and provider.
-
-### Accept Commitment
-`POST /api/commitments/:id/accept`
-
-Accept a proposed commitment.
-
-### Deliver Commitment
-`POST /api/commitments/:id/deliver`
-
-Submit deliverables for an active commitment.
-
-### Evaluate Commitment
-`POST /api/commitments/:id/evaluate`
-
-Evaluate delivered work and assign a quality score (0.0 to 10.0).
-
-### Settle Commitment
-`POST /api/commitments/:id/settle`
-
-Trigger USDC settlement on Base Sepolia for an evaluated commitment.
-
-## Memory API
-
-### Search Memory
-`GET /api/memory/search?agentId=:id`
-
-Search remembered commitment events and historical metrics for an agent.
-
-### Agent History
-`GET /api/agents/:id/history`
-
-Retrieve provider historical summary (completion rate, total commitments, average quality).
-
-## Demo API
-
-### Trigger Demo
-`POST /api/demo`
-
-Run individual steps of the 7-step demo pipeline or reset demo state.
+- **Propose Commitment**: `POST /api/commitments`
+- **Accept Commitment**: `POST /api/commitments/id/accept`
+- **Deliver Commitment**: `POST /api/commitments/id/deliver`
+- **Evaluate Commitment**: `POST /api/commitments/id/evaluate`
+- **Settle Commitment**: `POST /api/commitments/id/settle`
+- **Search Memory**: `GET /api/memory/search`
+- **Agent History**: `GET /api/agents/id/history`
+- **Trigger Demo**: `POST /api/demo`
